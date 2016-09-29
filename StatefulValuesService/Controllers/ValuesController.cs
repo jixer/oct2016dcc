@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace StatefulValuesService.Controllers
 {
@@ -21,9 +23,7 @@ namespace StatefulValuesService.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
-            var values = ReadValues().ToList();
-            values.Add(value);
-            WriteValues(values.ToArray());
+            WriteValue(value);
         }
 
         // DELETE api/values/5
@@ -34,21 +34,23 @@ namespace StatefulValuesService.Controllers
 
         private string[] ReadValues()
         {
-            CheckFile();
-            string data = System.IO.File.ReadAllText(DATAFILE);
-            if (string.IsNullOrEmpty(data)) return new string[0];
-            
-            return data.Split(',');
+            IMongoCollection<BsonDocument> collection = GetMongoCollection();
+            return collection.Find(x => true).ToList().Select(x => x.GetValue("value").ToString()).ToArray();
         }
 
-        private void WriteValues(string[] values)
+        private void WriteValue(string value)
         {
-            System.IO.File.WriteAllText(DATAFILE, string.Join(",", values));
+            var options = new InsertOneOptions();
+            options.BypassDocumentValidation = false;
+
+            IMongoCollection<BsonDocument> collection = GetMongoCollection();
+            collection.InsertOne(new BsonDocument("value", value), options);
         }
 
-        private void CheckFile()
+        private IMongoCollection<BsonDocument> GetMongoCollection()
         {
-            if (!(System.IO.File.Exists(DATAFILE))) System.IO.File.Create(DATAFILE).Dispose();
+            var client = new MongoClient("mongodb://db:27017");
+            return client.GetDatabase("values").GetCollection<BsonDocument>("default");
         }
     }
 }
