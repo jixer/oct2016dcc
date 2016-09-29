@@ -8,7 +8,7 @@ namespace StatefulValuesService.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private const string DATAFILE = @"datafile.csv";
+        private const string DATAFILE = @"data/datafile.csv";
 
         // GET api/values
         [HttpGet]
