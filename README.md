@@ -30,3 +30,13 @@ Run the aspnet generator:
 `yo aspnet`
 
 
+#### Step 3: Run Docker Generator
+Create a directory somewhere and navigate to the directory.
+
+Run the aspnet generator: 
+`yo docker`
+
+#### Step 4: Debug
+Open VS Code and navigate to the StatefulValuesService folder.
+
+Debug and note that you are running in a container.  View running containers in docker.

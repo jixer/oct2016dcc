@@ -16,9 +16,11 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0"
   },
+
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
   },
+
   "frameworks": {
     "netcoreapp1.0": {
       "imports": [
@@ -27,34 +29,32 @@
       ]
     }
   },
+
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "debugType": "portable"
+    "preserveCompilationContext": true
   },
+
   "runtimeOptions": {
     "configProperties": {
       "System.GC.Server": true
     }
   },
+
   "publishOptions": {
     "include": [
       "wwwroot",
       "Views",
       "Areas/**/Views",
       "appsettings.json",
-      "web.config",
-      "Dockerfile.debug",
-      "Dockerfile",
-      "docker-compose.debug.yml",
-      "docker-compose.yml"
+      "web.config"
     ]
   },
+
   "scripts": {
-    "postpublish": [
-      "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
-    ]
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   },
+
   "tooling": {
     "defaultNamespace": "StatefulValuesService"
   }
