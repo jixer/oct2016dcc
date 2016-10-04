@@ -2,7 +2,7 @@ version: '2'
 
 services:
   statefulvaluesservice:
-    image: jixer/statefulvaluesservice:debug
+    image: jixer/oct2016dcc:debug
     build:
       context: .
       dockerfile: Dockerfile.debug
@@ -10,5 +10,7 @@ services:
       - "5000:5000"
     environment:
       - REMOTE_DEBUGGING
+    links: 
+      - db
   db:
     image: mongo

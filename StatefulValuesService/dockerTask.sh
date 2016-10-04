@@ -1,4 +1,4 @@
-imageName="jixer/statefulvaluesservice"
+imageName="jixer/oct2016dcc"
 projectName="statefulvaluesservice"
 serviceName="statefulvaluesservice"
 containerName="${projectName}_${serviceName}_1"
