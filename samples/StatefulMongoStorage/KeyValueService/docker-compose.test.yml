@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  keyvalueservice:
+    image: jixer/keyvalueservice:test
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    links: 
+      - db
+    ports:
+      - "3000:3000"
+  db:
+    image: mongo
