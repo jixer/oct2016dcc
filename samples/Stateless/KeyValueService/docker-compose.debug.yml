@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  keyvalueservice:
+    image: jixer/keyvalueservice:debug
+    build:
+      context: .
+      dockerfile: Dockerfile.debug
+    ports:
+      - "3000:3000"
+    environment:
+      - REMOTE_DEBUGGING
