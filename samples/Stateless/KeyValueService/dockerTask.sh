@@ -92,8 +92,12 @@ runTests() {
     printf '.'
     sleep 1
   done
+  
+  echo ' '
 
+  echo 'Running Mocha tests'
   mocha ../Test
+  echo 'Done running tests!'
 }
 
 openSite () {

@@ -45,8 +45,10 @@
       "appsettings.json",
       "web.config",
       "Dockerfile.debug",
+      "Dockerfile.test",
       "Dockerfile",
       "docker-compose.debug.yml",
+      "docker-compose.test.yml",
       "docker-compose.yml"
     ]
   },

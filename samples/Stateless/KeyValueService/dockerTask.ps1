@@ -158,7 +158,11 @@ function ExecuteTests () {
         }
     }
 
+    Write-Host ""
+    Write-Host "Running tests"
     mocha ..//Tests
+
+    Write-Host "Done running tests!"
 }
 
 $Environment = $Environment.ToLowerInvariant()
