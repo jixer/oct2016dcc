@@ -5,6 +5,9 @@ COPY . .
 RUN dotnet restore && \
     dotnet build -c Release -o /app --framework .NETCoreApp,Version=v1.0;
 
+RUN mkdir /app/_Data && \
+    echo '' > /app/_Data/values.dat;
+
 WORKDIR /app
 ENV ASPNETCORE_URLS http://*:5000
 EXPOSE 5000
