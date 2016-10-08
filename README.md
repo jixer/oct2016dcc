@@ -59,12 +59,12 @@ Examine the build output for informaiton about what Docker is doing.  Also execu
 
 Now execute `docker run -i --rm -p 8080:5000 dotnetfilenew` in order to run the sample.
 
-Test this out via a web browser by navigating to [http://localhost:8080/]
+Test this out via a web browser by navigating to [http://localhost:8080/](http://localhost:8080/)
 
 
 ### Completed sample
 
-Completed sample lives here: [samples/DotNetNew]
+Completed sample lives here: [samples/DotNetNew](samples/DotNetNew)
 
 ---
 
