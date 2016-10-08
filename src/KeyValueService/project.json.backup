@@ -1,12 +1,13 @@
 {
   "dependencies": {
     "Microsoft.NETCore.App": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "type": "platform"
     },
-    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.1",
+    "Microsoft.AspNetCore.Routing": "1.0.1",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
@@ -44,8 +45,7 @@
   "publishOptions": {
     "include": [
       "wwwroot",
-      "Views",
-      "Areas/**/Views",
+      "**/*.cshtml",
       "appsettings.json",
       "web.config"
     ]
@@ -56,6 +56,6 @@
   },
 
   "tooling": {
-    "defaultNamespace": "StatefulValuesService"
+    "defaultNamespace": "KeyValueService"
   }
 }

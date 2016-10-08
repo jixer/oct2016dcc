@@ -5,7 +5,7 @@
     "windows": {
         "command": "powershell",
         "options": {
-            "cwd": "${workspaceRoot}"
+            "cwd": "${workspaceRoot}\\KeyValueService"
         },
         "tasks": [
             {
@@ -19,7 +19,7 @@
             {
                 "taskName": "compose",
                 "suppressTaskName": true,
-                "args": ["-ExecutionPolicy", "RemoteSigned", ".\\dockerTask.ps1", "-Compose", "-Environment", "debug" ],
+                "args": ["-ExecutionPolicy", "RemoteSigned", ".\\dockerTask.ps1", "-Compose", "-Environment", "test" ],
                 "isBuildCommand": false,
                 "showOutput": "always",
                 "echoCommand": true
@@ -31,13 +31,21 @@
                 "isBuildCommand": false,
                 "showOutput": "always",
                 "echoCommand": true
+            },
+            {
+                "taskName": "runTests",
+                "suppressTaskName": true,
+                "args": ["-ExecutionPolicy", "RemoteSigned", ".\\dockerTask.ps1", "-RunTests", "-Environment", "test" ],
+                "isBuildCommand": false,
+                "showOutput": "always",
+                "echoCommand": true
             }
         ]
     },
     "osx": {
         "command": "/bin/bash",
         "options": {
-            "cwd": "${workspaceRoot}"
+            "cwd": "${workspaceRoot}/KeyValueService"
         },
         "tasks": [
             {
@@ -58,6 +66,13 @@
                 "taskName": "composeForDebug",
                 "suppressTaskName": true,
                 "args": [ "-c", "./dockerTask.sh composeForDebug debug" ],
+                "isBuildCommand": false,
+                "showOutput": "always"
+            },
+            {
+                "taskName": "runTests",
+                "suppressTaskName": true,
+                "args": [ "-c", "./dockerTask.sh runTests test" ],
                 "isBuildCommand": false,
                 "showOutput": "always"
             }

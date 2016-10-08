@@ -1,14 +1,14 @@
 version: '2'
 
 services:
-  statefulvaluesservice:
-    image: jixer/oct2016dcc
+  keyvalueservice:
+    image: jixer/keyvalueservice
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
     links: 
       - db
+    ports:
+      - "3000:3000"
   db:
     image: mongo

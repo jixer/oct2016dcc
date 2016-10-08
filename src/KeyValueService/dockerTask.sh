@@ -1,9 +1,9 @@
-imageName="jixer/oct2016dcc"
-projectName="statefulvaluesservice"
-serviceName="statefulvaluesservice"
+imageName="jixer/keyvalueservice"
+projectName="keyvalueservice"
+serviceName="keyvalueservice"
 containerName="${projectName}_${serviceName}_1"
-publicPort=5000
-url="http://localhost:$publicPort"
+publicPort=3000
+url="http://localhost:$publicPort/api/values"
 runtimeID="debian.8-x64"
 framework="netcoreapp1.0"
 
@@ -86,6 +86,20 @@ startDebugging () {
 
 }
 
+runTests() {
+  printf 'Checking site'
+  until $(curl --output /dev/null --silent --head --fail $url); do
+    printf '.'
+    sleep 1
+  done
+  
+  echo ' '
+
+  echo 'Running Mocha tests'
+  mocha ../Test
+  echo 'Done running tests!'
+}
+
 openSite () {
   printf 'Opening site'
   until $(curl --output /dev/null --silent --head --fail $url); do
@@ -108,6 +122,7 @@ showUsage () {
   echo "    clean: Removes the image '$imageName' and kills all containers based on that image."
   echo "    composeForDebug: Builds the image and runs docker-compose."
   echo "    startDebugging: Finds the running container and starts the debugger inside of it."
+  echo "    runTests: Builds the image, runs docker-compose, and then executes mocha tests within Test directory."
   echo ""
   echo "Environments:"
   echo "    debug: Uses debug environment."
@@ -134,6 +149,12 @@ else
             export REMOTE_DEBUGGING=1
             buildImage
             compose
+            ;;
+    "runTests")
+            cleanAll
+            buildImage
+            compose
+            runTests
             ;;
     "startDebugging")
             startDebugging

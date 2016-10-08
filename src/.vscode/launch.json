@@ -7,7 +7,7 @@
             "request": "launch",
             "preLaunchTask": "composeForDebug",
             "cwd": "/app",
-            "program": "/app/StatefulValuesService.dll",
+            "program": "/app/KeyValueService.dll",
             "sourceFileMap": {
                 "/app": "${workspaceRoot}"
             },
@@ -26,11 +26,11 @@
 
             "pipeTransport": {
                 "pipeProgram": "/bin/bash",
-                "pipeCwd": "${workspaceRoot}",
+                "pipeCwd": "${workspaceRoot}/KeyValueService",
                 "pipeArgs": [ "-c", "./dockerTask.sh startDebugging" ],
                 "windows": {
                     "pipeProgram": "${env.windir}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                    "pipeCwd": "${workspaceRoot}",
+                    "pipeCwd": "${workspaceRoot}\\KeyValueService\\",
                     "pipeArgs": [ ".\\dockerTask.ps1", "-StartDebugging" ]
                 }
             }

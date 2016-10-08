@@ -6,7 +6,7 @@ Runs docker-compose.
 .PARAMETER Build
 Builds a Docker image.
 .PARAMETER Clean
-Removes the image jixer/statefulvaluesservice and kills all containers based on that image.
+Removes the image jixer/keyvalueservice and kills all containers based on that image.
 .PARAMETER ComposeForDebug
 Builds the image and runs docker-compose.
 .PARAMETER StartDebugging
@@ -15,7 +15,7 @@ Finds the running container and starts the debugger inside of it.
 The enviorment to build for (Debug or Release), defaults to Debug
 .EXAMPLE
 C:\PS> .\dockerTask.ps1 -Build
-Build a Docker image named jixer/statefulvaluesservice
+Build a Docker image named jixer/keyvalueservice
 #>
 
 Param(
@@ -29,20 +29,23 @@ Param(
     [switch]$Build,
     [Parameter(Mandatory=$True,ParameterSetName="Clean")]
     [switch]$Clean,
+    [Parameter(Mandatory=$True,ParameterSetName="RunTests")]
+    [switch]$RunTests,
     [parameter(ParameterSetName="Compose")]
     [Parameter(ParameterSetName="ComposeForDebug")]
     [parameter(ParameterSetName="Build")]
     [parameter(ParameterSetName="Clean")]
+    [parameter(ParameterSetName="RunTests")]
     [ValidateNotNullOrEmpty()]
     [String]$Environment = "Debug"
 )
 
-$imageName="jixer/oct2016dcc"
-$projectName="statefulvaluesservice"
-$serviceName="statefulvaluesservice"
+$imageName="jixer/keyvalueservice"
+$projectName="keyvalueservice"
+$serviceName="keyvalueservice"
 $containerName="${projectName}_${serviceName}_1"
-$publicPort=5000
-$url="http://localhost:$publicPort"
+$publicPort=3000
+$url="http://localhost:$publicPort/api/values"
 $runtimeID = "debian.8-x64"
 $framework = "netcoreapp1.0"
 
@@ -137,6 +140,31 @@ function OpenSite () {
     Start-Process $url
 }
 
+# Runs the mocha tests against the remote site
+function ExecuteTests () {
+    Write-Host "Opening site" -NoNewline
+    $status = 0
+
+    #Check if the site is available
+    while($status -ne 200) {
+        try {
+            $response = Invoke-WebRequest -Uri $url -Headers @{"Cache-Control"="no-cache";"Pragma"="no-cache"} -UseBasicParsing
+            $status = [int]$response.StatusCode
+        }
+        catch [System.Net.WebException] { }
+        if($status -ne 200) {
+            Write-Host "." -NoNewline
+            Start-Sleep 1
+        }
+    }
+
+    Write-Host ""
+    Write-Host "Running tests"
+    mocha ..//Tests
+
+    Write-Host "Done running tests!"
+}
+
 $Environment = $Environment.ToLowerInvariant()
 
 # Call the correct function for the parameter that was used
@@ -148,6 +176,12 @@ elseif($ComposeForDebug) {
     $env:REMOTE_DEBUGGING = 1
     BuildImage
     Compose
+}
+elseif($RunTests) {
+    CleanAll
+    BuildImage
+    Compose
+    ExecuteTests
 }
 elseif($StartDebugging) {
     StartDebugging
