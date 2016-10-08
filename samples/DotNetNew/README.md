@@ -1,1 +1,1 @@
-For steps on how to create a project structure like the one found here, view the README.md file at the root of this project: [../../](../../)
+For steps on how to create a project structure like the one found here, view the Demo 1 Section of the README.md file at the root of this project: [../../README.md](../../README.md#demo-1-first-dockerized-net-core-app)
