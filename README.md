@@ -62,6 +62,10 @@ Now execute `docker run -i --rm -p 8080:5000 dotnetfilenew` in order to run the 
 Test this out via a web browser by navigating to (http://localhost:8080/)
 
 
+### Completed sample
+
+Completed sample lives here: (samples/DotNetNew)
+
 ---
 
 
