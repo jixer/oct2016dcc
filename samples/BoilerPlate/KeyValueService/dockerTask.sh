@@ -15,7 +15,7 @@ cleanAll () {
 
   composeFileName="docker-compose.yml"
   if [[ $ENVIRONMENT != "release" ]]; then
-    composeFileName="docker-compose.$ENVIRONMENT.yml"
+    composeFileName="docker-compose.$ENVIRONMENT.yml" 
   fi
 
   if [[ ! -f $composeFileName ]]; then
@@ -87,22 +87,18 @@ startDebugging () {
 }
 
 runTests() {
-  printf 'Checking site'
-  until $(curl --output /dev/null --silent --head --fail $url); do
-    printf '.'
-    sleep 1
-  done
-  
-  echo ' '
-
+  echo 'Sleeping for 5 seconds'
+  echo 'Running npm'
+  cd ../Tests
+  npm install
   echo 'Running Mocha tests'
-  mocha ../Test
+  mocha 
   echo 'Done running tests!'
 }
 
 openSite () {
   printf 'Opening site'
-  until $(curl --output /dev/null --silent --head --fail $url); do
+  until $(curl $url); do
     printf '.'
     sleep 1
   done
@@ -151,6 +147,7 @@ else
             compose
             ;;
     "runTests")
+            ENVIRONMENT=$(echo $2 | tr "[:upper:]" "[:lower:]")
             buildImage
             compose
             runTests

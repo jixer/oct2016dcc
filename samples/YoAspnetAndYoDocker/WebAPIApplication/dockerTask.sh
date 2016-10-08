@@ -12,7 +12,7 @@ cleanAll () {
   if [[ -z $ENVIRONMENT ]]; then
     ENVIRONMENT="debug"
   fi
-
+ 
   composeFileName="docker-compose.yml"
   if [[ $ENVIRONMENT != "release" ]]; then
     composeFileName="docker-compose.$ENVIRONMENT.yml"
