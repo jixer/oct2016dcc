@@ -1,1 +1,0 @@
-To get back to the root, click the following link: [../../README.md](../../README.md#demo-5-storing-state-in-mongodb)
