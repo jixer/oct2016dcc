@@ -10,3 +10,7 @@ services:
       - "3000:3000"
     environment:
       - REMOTE_DEBUGGING
+    links: 
+      - db
+  db:
+    image: mongo
