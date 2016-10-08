@@ -50,8 +50,7 @@
       "Dockerfile",
       "docker-compose.debug.yml",
       "docker-compose.test.yml",
-      "docker-compose.yml",
-      "_Data/*"
+      "docker-compose.yml"
     ]
   },
   "scripts": {
