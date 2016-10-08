@@ -1,0 +1,1 @@
+For steps on how to create a project structure like the one found here, view the README.md file at the root of this project: [../../](../../)
