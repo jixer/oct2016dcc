@@ -128,10 +128,10 @@ Completed sample lives here: [samples/YoAspnetAndYoDocker](samples/YoAspnetAndYo
 The remaining demos presented at Desert Code Camp are not documented herein, but all the source code is available in the [samples](samples) directory.
 
 ### Demo 3: Initial Code for Service
-Version 1 of the service with no backing state: [samples\BoilerPlate](samples\BoilerPlate)
+Version 1 of the service with no backing state: [samples/BoilerPlate](samples/BoilerPlate)
 
 ### Demo 4: Storing State in a File
-Version 2 of the service with state stored in a file: [samples\StatefulFileStorage](samples\StatefulFileStorage)
+Version 2 of the service with state stored in a file: [samples/StatefulFileStorage](samples/StatefulFileStorage)
 
 ### Demo 5: Storing State in MongoDB
-Version 3 of the service with state stored in a separate MongoDB container: [samples\StatefulMongoStorage](samples\StatefulMongoStorage)
+Version 3 of the service with state stored in a separate MongoDB container: [samples/StatefulMongoStorage](samples/StatefulMongoStorage)
