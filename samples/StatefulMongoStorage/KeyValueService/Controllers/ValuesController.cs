@@ -16,8 +16,13 @@ namespace DesertCodeCamp.DockerNetCore.KeyValueService.Controllers
         [HttpGet]
         public IEnumerable<KeyValuePair<string, string>> Get()
         {
-            
-            return Graft(_mongoCollection.Find(x => true).ToList());
+            IEnumerable<KeyValuePair<string, string>> retVal;
+
+            // implement logging
+            retVal = Graft(_mongoCollection.Find(x => true).ToList());
+            // implement logging
+             
+            return retVal;
         }
 
         // GET api/values/5

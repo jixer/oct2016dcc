@@ -2,15 +2,11 @@ version: '2'
 
 services:
   keyvalueservice:
-    image: jixer/keyvalueservice:debug
+    image: jixer/oct2016dcc:debug
     build:
       context: .
       dockerfile: Dockerfile.debug
-    links: 
-      - db
     ports:
       - "3000:3000"
     environment:
       - REMOTE_DEBUGGING
-  db:
-    image: mongo
