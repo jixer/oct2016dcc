@@ -133,5 +133,5 @@ Version 1 of the service with no backing state: [samples\BoilerPlate](samples\Bo
 ### Demo 4: Storing State in a File
 Version 2 of the service with state stored in a file: [samples\StatefulFileStorage](samples\StatefulFileStorage)
 
-### Demo 5: Storing State in Mongo
+### Demo 5: Storing State in MongoDB
 Version 3 of the service with state stored in a separate MongoDB container: [samples\StatefulMongoStorage](samples\StatefulMongoStorage)
