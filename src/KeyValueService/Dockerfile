@@ -9,6 +9,6 @@ RUN mkdir /app/_Data && \
     echo '' > /app/_Data/values.dat;
 
 WORKDIR /app
-ENV ASPNETCORE_URLS http://*:5000
-EXPOSE 5000
+ENV ASPNETCORE_URLS http://*:3000
+EXPOSE 3000
 ENTRYPOINT ["dotnet", "KeyValueService.dll"]

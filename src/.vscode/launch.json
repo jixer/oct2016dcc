@@ -26,11 +26,11 @@
 
             "pipeTransport": {
                 "pipeProgram": "/bin/bash",
-                "pipeCwd": "${workspaceRoot}/KeyValueService",
+                "pipeCwd": "${workspaceRoot}",
                 "pipeArgs": [ "-c", "./dockerTask.sh startDebugging" ],
                 "windows": {
                     "pipeProgram": "${env.windir}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                    "pipeCwd": "${workspaceRoot}\\KeyValueService\\",
+                    "pipeCwd": "${workspaceRoot}",
                     "pipeArgs": [ ".\\dockerTask.ps1", "-StartDebugging" ]
                 }
             }

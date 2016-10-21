@@ -5,7 +5,7 @@
     "windows": {
         "command": "powershell",
         "options": {
-            "cwd": "${workspaceRoot}\\KeyValueService"
+            "cwd": "${workspaceRoot}"
         },
         "tasks": [
             {
@@ -35,7 +35,7 @@
             {
                 "taskName": "runTests",
                 "suppressTaskName": true,
-                "args": ["-ExecutionPolicy", "RemoteSigned", ".\\dockerTask.ps1", "-RunTests", "-Environment", "debug" ],
+                "args": ["-ExecutionPolicy", "RemoteSigned", ".\\dockerTask.ps1", "-RunTests", "-Environment", "release"  ],
                 "isBuildCommand": false,
                 "showOutput": "always",
                 "echoCommand": true
@@ -45,7 +45,7 @@
     "osx": {
         "command": "/bin/bash",
         "options": {
-            "cwd": "${workspaceRoot}/KeyValueService"
+            "cwd": "${workspaceRoot}"
         },
         "tasks": [
             {
@@ -72,7 +72,7 @@
             {
                 "taskName": "runTests",
                 "suppressTaskName": true,
-                "args": [ "-c", "./dockerTask.sh runTests debug" ],
+                "args": [ "-c", "./dockerTask.sh runTests" ],
                 "isBuildCommand": false,
                 "showOutput": "always"
             }

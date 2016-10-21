@@ -42,6 +42,7 @@ Param(
 
 $imageName="jixer/keyvalueservice"
 $projectName="keyvalueservice"
+$projectDir="keyvalueservice"
 $serviceName="keyvalueservice"
 $containerName="${projectName}_${serviceName}_1"
 $publicPort=3000
@@ -78,11 +79,16 @@ function BuildImage () {
 
     if (Test-Path $composeFileName) {
         Write-Host "Building the project ($ENVIRONMENT)."
+        
         $pubFolder = "bin\$Environment\$framework\publish"
+        
+        cd $projectDir
         dotnet publish -f $framework -r $runtimeID -c $Environment -o $pubFolder
+        cd ..
+        cp $composeFileName $projectDir\$pubFolder\$composeFileName
 
         Write-Host "Building the image $imageName ($Environment)."
-        docker-compose -f "$pubFolder\$composeFileName" -p $projectName build
+        docker-compose -f "$projectDir\$pubFolder\$composeFileName" -p $projectName build
     }
     else {
         Write-Error -Message "$Environment is not a valid parameter. File '$composeFileName' does not exist." -Category InvalidArgument
@@ -160,7 +166,7 @@ function ExecuteTests () {
 
     Write-Host ""
     Write-Host "Running tests"
-    mocha ..//Tests
+    mocha Tests
 
     Write-Host "Done running tests!"
 }
