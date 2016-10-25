@@ -10,6 +10,8 @@ dependencies:
         - sudo pip install docker-compose
     post:
         - ./dockerTask.sh compose release
-notify:
-    webhooks:
-        - url: https://registry.hub.docker.com/u/jixer/oct2016dcc/trigger/f19f4743-2531-44c2-900d-689bde0c40a0/
+deployment:
+    dockerhub:
+        branch: master
+        commands:
+            - curl -H "Content-Type: application/json" --data '{"build": true}' -X POST $DOCKER_HUB_TRIGER_URL
