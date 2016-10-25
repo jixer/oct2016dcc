@@ -97,7 +97,7 @@ runTests() {
   echo ' '
 
   echo 'Running Mocha tests'
-  mocha Test
+  mocha
   echo 'Done running tests!'
 }
 

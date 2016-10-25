@@ -166,7 +166,7 @@ function ExecuteTests () {
 
     Write-Host ""
     Write-Host "Running tests"
-    mocha Tests
+    mocha
 
     Write-Host "Done running tests!"
 }
