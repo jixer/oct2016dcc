@@ -14,4 +14,3 @@ dependencies:
         - sudo apt-get install dotnet-dev-1.0.0-preview2-003121
     override:
         - dotnet restore
-        - npm install --dev Tests
