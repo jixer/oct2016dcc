@@ -184,8 +184,6 @@ elseif($ComposeForDebug) {
     Compose
 }
 elseif($RunTests) {
-    CleanAll
-    BuildImage
     Compose
     ExecuteTests
 }

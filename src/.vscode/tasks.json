@@ -72,7 +72,7 @@
             {
                 "taskName": "runTests",
                 "suppressTaskName": true,
-                "args": [ "-c", "./dockerTask.sh runTests" ],
+                "args": [ "-c", "./dockerTask.sh runTests release" ],
                 "isBuildCommand": false,
                 "showOutput": "always"
             }

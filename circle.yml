@@ -12,4 +12,4 @@ dependencies:
         - sudo pip install docker-compose
 test:
     post:
-        - ./dockerTask.sh runTests
+        - ./dockerTask.sh runTests release

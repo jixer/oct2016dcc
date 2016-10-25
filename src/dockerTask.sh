@@ -155,8 +155,6 @@ else
             compose
             ;;
     "runTests")
-            cleanAll
-            buildImage
             compose
             runTests
             ;;
