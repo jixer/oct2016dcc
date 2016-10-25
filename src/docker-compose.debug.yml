@@ -4,7 +4,7 @@ services:
   keyvalueservice:
     image: jixer/keyvalueservice:debug
     build:
-      context: ./keyvalueservice
+      context: ./KeyValueService/
       dockerfile: Dockerfile.debug
     links: 
       - db
