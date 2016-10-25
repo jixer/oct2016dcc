@@ -1,8 +1,6 @@
 general:
     build_dir: src
 machine:
-    node:
-        version: 0.10.22
     pre:
         - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
     services:
