@@ -91,11 +91,8 @@ startDebugging () {
 }
 
 runTests() {
-  printf 'Checking site'
-  until $(curl --output /dev/null --silent --head --fail $url); do
-    printf '.'
-    sleep 1
-  done
+  echo 'Waiting for a bit'
+  sleep 5
   
   echo ' '
 
@@ -155,6 +152,7 @@ else
             compose
             ;;
     "runTests")
+            ENVIRONMENT=$(echo $2 | tr "[:upper:]" "[:lower:]")
             compose
             runTests
             ;;
