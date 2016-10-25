@@ -10,6 +10,9 @@ machine:
 dependencies:
     pre:
         - sudo pip install docker-compose
+        - npm install -g mocha
+    override:
+        - cd Tests; npm install
 test:
     post:
         - ./dockerTask.sh runTests release
